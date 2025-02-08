@@ -1,0 +1,6 @@
+pip install pdfplumber
+pip install torch
+pip install langchain
+pip install langchain-community
+pip install chromadb
+pip install streamlit
