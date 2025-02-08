@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eshwaran's Enhanced Chat Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .answer {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9f7e9;
+            border: 1px solid #d1e7d1;
+            border-radius: 4px;
+            color: #333;
+        }
+        .warning {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9e9;
+            border: 1px solid #f1f1c1;
+            border-radius: 4px;
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Eshwaran's Enhanced Chat Bot</h1>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="url">Enter the URL to scrape:</label>
+                <input type="text" id="url" name="url" placeholder="e.g., https://example.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="question">Enter your question:</label>
+                <input type="text" id="question" name="question" placeholder="Ask your question..." required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if answer %}
+        <div class="answer">
+            <h3>Answer:</h3>
+            <p>{{ answer }}</p>
+        </div>
+        {% endif %}
+
+        {% if not answer and request.method == 'POST' %}
+        <div class="warning">
+            <p>There was an issue with the URL or the response. Please check your input.</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
